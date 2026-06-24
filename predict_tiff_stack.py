@@ -2,6 +2,20 @@
 # YOLOv8 Organoid Segmentation — Predict on TIFF Stack
 # Reads a multi-page TIFF, runs inference on each frame,
 # and saves masks + optionally annotated frames as output.
+
+# Usage: 
+# Fast mode (masks only — for viability analysis)
+# python predict_tiff_stack.py \
+#   --tiff path-to-your-tiff-file \
+#   --model path-to-your_yolov8l-seg.pt \
+#   --outdir your-output-folder-path \
+#   --masks_only
+
+# Full mode (masks + annotated — for visual QC)
+# python predict_tiff_stack.py \
+#   --tiff path-to-your-tiff-file \
+#   --model path-to-your_yolov8l-seg.pt \
+#   --outdir your-output-folder-path
 # ============================================================
 
 import argparse
