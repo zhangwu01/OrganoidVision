@@ -1,0 +1,29 @@
+name: yolov8-seg
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.11
+  - pip
+
+  - pip:
+      # ── PyTorch ──────────────────────────────────────────────
+      # PyTorch is installed separately via install.sh to match
+      # the platform (CUDA version, MPS, or CPU).
+      # Do NOT install torch here — run install.sh after creating env.
+
+      # ── Core packages ─────────────────────────────────────────
+      - ultralytics==8.4.64     # YOLOv8
+      - roboflow                # dataset download
+      - pandas                  # results comparison table
+      - opencv-python-headless  # image I/O (headless = no GUI)
+      - matplotlib              # plots
+      - seaborn                 # confusion matrix styling
+      - PyYAML                  # yaml config handling
+      - tqdm                    # progress bars
+      - psutil                  # system resource monitoring
+      - tifffile                # read/write multi-page TIFF stacks
+      - scipy                   # connected component labeling
+      - "numpy<2"               # pin numpy 1.x for compatibility

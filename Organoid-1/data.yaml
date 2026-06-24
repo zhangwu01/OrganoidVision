@@ -1,0 +1,12 @@
+names:
+- organoid
+nc: 1
+roboflow:
+  license: CC BY 4.0
+  project: organoid-clo9p
+  url: https://universe.roboflow.com/zhangwu-uchicago-edu/organoid-clo9p/dataset/1
+  version: 1
+  workspace: zhangwu-uchicago-edu
+test: ../test/images
+train: ../train/images
+val: ../valid/images
