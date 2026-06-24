@@ -35,6 +35,7 @@ else:
     print(f"HPC/GPU detected: imgsz={IMGSZ}, batch={BATCH}")
 
 # Download dataset from Roboflow 
+rf = Roboflow(api_key="PL9WhqPzdYDJyrqYlMi4")
 project = rf.workspace("zhangwu-uchicago-edu").project("organoid-clo9p")
 version = project.version(1)
 
