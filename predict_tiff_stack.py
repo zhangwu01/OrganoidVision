@@ -2,18 +2,6 @@
 # YOLOv8 Organoid Segmentation — Predict on TIFF Stack
 # Reads a multi-page TIFF, runs inference on each frame,
 # and saves masks + optionally annotated frames as output.
-
-# Usage: 
-# Fast mode (masks only — for viability analysis)
-# python predict_tiff_stack.py \
-#   --tiff stack.tif \
-#   --model yolov8l-seg.pt \
-#   --masks_only
-
-# Full mode (masks + annotated — for visual QC)
-# python predict_tiff_stack.py \
-#   --tiff stack.tif \
-#   --model yolov8l-seg.pt
 # ============================================================
 
 import argparse
@@ -45,7 +33,7 @@ if args.masks_only:
 tiff_path = Path(args.tiff)
 print(f"\nLoading TIFF stack: {tiff_path}")
 
-stack = tifffile.imread(str(tiff_path))
+stack = tifffile.imread(str(tiff_path), is_ome=False)
 
 if stack.ndim == 2:
     stack = stack[np.newaxis, ...]
@@ -101,13 +89,13 @@ print("\nSaving outputs...")
 # Mask TIFF stack (always saved)
 mask_tiff = outdir / f"{tiff_path.stem}_masks.tif"
 tifffile.imwrite(str(mask_tiff), np.stack(mask_stack).astype(np.uint8))
-print(f"  Mask stack      -> {mask_tiff}")
+print(f"  Mask stack      → {mask_tiff}")
 
 # Annotated TIFF stack (only if not masks_only)
 if not args.masks_only:
     annotated_tiff = outdir / f"{tiff_path.stem}_annotated.tif"
     tifffile.imwrite(str(annotated_tiff), np.stack(annotated_stack).astype(np.uint8))
-    print(f"  Annotated stack -> {annotated_tiff}")
+    print(f"  Annotated stack → {annotated_tiff}")
 else:
     print("  Annotated stack — skipped (masks_only mode)")
 
