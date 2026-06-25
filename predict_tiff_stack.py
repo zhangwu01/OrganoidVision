@@ -7,7 +7,7 @@
 # Fast mode (masks only — for viability analysis)
 # python predict_tiff_stack.py \
 #   --tiff path-to-your-tiff-file \
-#   --model path-to-your_yolov8l-seg.pt \
+#   --model path-to-your_best.pt \
 #   --outdir your-output-folder-path \
 #   --masks_only
 
